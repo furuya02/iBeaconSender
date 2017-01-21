@@ -12,10 +12,10 @@ import CoreBluetooth
 
 class ViewController: NSViewController, CBPeripheralManagerDelegate {
 
-    @IBOutlet weak var button: NSButtonCell!
+    @IBOutlet weak var startButton: NSButton!
+    @IBOutlet weak var stopButton: NSButton!
     
     var manager: CBPeripheralManager!
-    var beaconData: BeaconData!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +25,26 @@ class ViewController: NSViewController, CBPeripheralManagerDelegate {
 
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == CBPeripheralManagerState.poweredOn {
-            
-            let uuid = NSUUID.init(uuidString: "48534442-4C45-4144-80C0-1800FFFFFFFF")
-            let major = UInt16(1)
-            let minor = UInt16(1)
-            let measuredPower = Int8(-60)
-            
-            beaconData = BeaconData(proximityUUID: uuid, major: major, minor: minor, measuredPower: measuredPower)
+            // 使用可能なのでボタンを有効にする
+            startButton.isEnabled = true
+            stopButton.isEnabled = true
         }
     }
 
-    @IBAction func tapOnButton(_ sender: NSButton) {
+    @IBAction func tapStartButton(_ sender: Any) {
         view.backgroundColor = NSColor.red
-        manager.startAdvertising(beaconData.Advertisement() as! [String : Any]?)
+        
+//        let uuid = UUID.init(uuidString: "myuuid")
+//        let beaconRegion = CLBeaconRegion.init(proximityUUID: uuid!, major: 0, minor: 0, identifier: "jp.classmethod.myregion")
+//        let beaconData = NSDictionary(dictionary: beaconRegion.peripheralData(withMeasuredPower: nil))
+//        manager.startAdvertising(beaconData as? [String : Any] )
+        
+        
+        let uuid = UUID.init(uuidString: "48534442-4C45-4144-80C0-1800FFFFFFFF")
+        let beaconData = BeaconData(proximityUUID: uuid, major: 1, minor: 1, measuredPower: -60)
+        manager.startAdvertising(beaconData.advertisement as! [String : Any]?)
     }
-   
-    @IBAction func tapOffButton(_ sender: NSButton) {
+    @IBAction func tapStopButton(_ sender: Any) {
         view.backgroundColor = NSColor.windowBackgroundColor
         manager.stopAdvertising()
     }

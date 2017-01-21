@@ -699,12 +699,12 @@
                                                     <constraint firstAttribute="width" constant="150" id="1Mh-Rs-zfQ"/>
                                                     <constraint firstAttribute="height" constant="100" id="Uh9-qw-2WW"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="ON" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Gm-Ts-bi1">
+                                                <buttonCell key="cell" type="push" title="START" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Gm-Ts-bi1">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="tapOnButton:" target="XfG-lQ-9wD" id="EWh-Nb-Ld4"/>
+                                                    <action selector="tapStartButton:" target="XfG-lQ-9wD" id="bzf-E5-4DR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -721,12 +721,12 @@
                                             <constraint firstAttribute="width" constant="150" id="h5T-ek-hcs"/>
                                             <constraint firstAttribute="height" constant="100" id="wkT-J0-mcN"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="push" title="OFF" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yoj-eL-kdx">
+                                        <buttonCell key="cell" type="push" title="STOP" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yoj-eL-kdx">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="tapOffButton:" target="XfG-lQ-9wD" id="LlY-ES-mYc"/>
+                                            <action selector="tapStopButton:" target="XfG-lQ-9wD" id="OFZ-Q0-8Sd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -746,7 +746,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="1Gm-Ts-bi1" id="JAz-LS-A32"/>
+                        <outlet property="startButton" destination="fKW-Nb-zgr" id="OLp-nK-OzN"/>
+                        <outlet property="stopButton" destination="zzQ-dK-Oqr" id="0D8-Az-f6e"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
